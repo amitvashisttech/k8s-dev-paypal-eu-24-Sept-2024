@@ -12,7 +12,7 @@ This README outlines how to create, manage, and scale a Kubernetes `ReplicationC
 
 2. **Create the ReplicationController YAML File:**
 
-    ````bash
+    ```bash
 
      cat helloworld-rc.yaml
     ```
