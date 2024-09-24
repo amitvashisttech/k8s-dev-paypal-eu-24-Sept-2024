@@ -1,30 +1,30 @@
 ## Cluster Information Commands
 
-#### Get Cluster Information:
+#### 1. Get Cluster Information:
 
 ```
 kubectl cluster-info
 ```
 #### This command retrieves the details about the Kubernetes master and worker components running in the cluster.
 
-#### Check Kubernetes Version:
+#### 2. Check Kubernetes Version:
 
 ```
 kubectl version
 ```
-#### Provides detailed version information for both the Kubernetes client and server.
+#####  Provides detailed version information for both the Kubernetes client and server.
 
 
-#### List API Versions:
+#### 2. List API Versions:
 
 ```
 kubectl api-versions
 ```
-#### This command lists all the supported API versions available in the Kubernetes cluster.
+##### This command lists all the supported API versions available in the Kubernetes cluster.
 
-#### List API Resources:
+#### 3. List API Resources:
 
 ```
 kubectl api-resources
 ```
-#### Retrieves a list of all available resources (such as pods, services, deployments, etc.) along with their supported verbs (such as get, create, delete, etc.).
+##### Retrieves a list of all available resources (such as pods, services, deployments, etc.) along with their supported verbs (such as get, create, delete, etc.).
