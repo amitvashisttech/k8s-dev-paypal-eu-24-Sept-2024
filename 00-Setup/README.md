@@ -37,6 +37,7 @@ ip addr
 ```
 kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address="YourMasterNodeIP" --cri-socket unix://var/run/crio/crio.sock
 ```
+```
 ---
 Your Kubernetes master has initialized successfully!
 
