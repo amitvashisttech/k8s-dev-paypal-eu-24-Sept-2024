@@ -13,6 +13,7 @@ kubectl run hello-k8s --image=nginx --port=80
 ## Check the status of PODs
 ```
 kubectl get pods
+kubectl get pods -o wide
 kubectl describe pods hello-k8s
 ```
 
