@@ -70,8 +70,8 @@ root@master:~# sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ### To Check the K8s Node Status
 ```
 root@k8s-master:~# kubectl get nodes 
-NAME         STATUS   ROLES    AGE    VERSION
-master   Ready    master   5m6s   v1.18.0
+NAME     STATUS   ROLES           AGE    VERSION
+master   Ready    control-plane   9m4s   v1.29.9
 ```
 
 ### Now you can apply the Calico CNI:
@@ -97,16 +97,16 @@ kubeadm join 172.31.0.100:6443 --token mr74fn.m4upjko4cfm5uwmz --discovery-token
 ## Let check the kubernetes cluster nodes status & details
 ```
 root@k8s-master:~# kubectl get nodes 
-NAME            STATUS   ROLES    AGE     VERSION
-k8s-master      Ready    master   8m45s   v1.18.0
-k8s-worker-01   Ready    <none>   2m1s    v1.18.0
-k8s-worker-02   Ready    <none>   24s     v1.18.0
+NAME      STATUS   ROLES           AGE     VERSION
+master    Ready    control-plane   13m     v1.29.9
+worker1   Ready    <none>          3m31s   v1.29.9
+worker2   Ready    <none>          12s     v1.29.9
 
 root@master:~ # kubectl  get node -o wide
-NAME      STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-master    Ready    control-plane   16m   v1.26.3   10.1.0.4      <none>        Ubuntu 20.04.6 LTS   5.15.0-1034-azure   cri-o://1.23.5
-worker1   Ready    <none>          11m   v1.26.3   10.1.0.5      <none>        Ubuntu 20.04.6 LTS   5.15.0-1034-azure   cri-o://1.23.5
-worker2   Ready    <none>          11m   v1.26.3   10.1.0.6      <none>        Ubuntu 20.04.6 LTS   5.15.0-1034-azure   cri-o://1.23.5
+NAME      STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION    CONTAINER-RUNTIME
+master    Ready    control-plane   14m     v1.29.9   10.138.0.2    <none>        Ubuntu 20.04.6 LTS   5.15.0-1067-gcp   cri-o://1.23.5
+worker1   Ready    <none>          4m30s   v1.29.9   10.138.0.5    <none>        Ubuntu 20.04.6 LTS   5.15.0-1067-gcp   cri-o://1.23.5
+worker3   Ready    <none>          71s     v1.29.9   10.138.0.7    <none>        Ubuntu 20.04.6 LTS   5.15.0-1067-gcp   cri-o://1.23.5
 root@master:~ #
 ```
 
