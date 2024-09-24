@@ -82,7 +82,7 @@ kubectl  apply -f calico.yaml
 ## In parallel Login to both the nodes /workers & clone the repo after that execute install-node.sh. 
 
 ```
-vagrant.exe ssh woker1
+# ssh to workers
 sudo su - 
 git clone https://github.com/amitvashisttech/k8s-dev-paypal-eu-24-Sept-2024.git
 cd k8s-dev-paypal-eu-24-Sept-2024/00-Setup
