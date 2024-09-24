@@ -43,8 +43,37 @@ This README covers how to use `kubectl proxy` to expose the Kubernetes API and h
    ```
 This command starts a local proxy to the Kubernetes API server, allowing you to interact with the API through HTTP without needing to authenticate.
 
- - --address='172.31.0.100': Specifies the IP address on which the proxy will listen.
+ - --address='YourMasterNodeIP': Specifies the IP address on which the proxy will listen.
  - --port=8001: The port on which the proxy will run.
  - --accept-hosts='.': Accepts requests from any host.
  - --accept-paths='.': Allows requests to any API path.
     The & at the end runs the process in the background.   
+
+2. **Interacting with the API Using curl**
+
+    Once the proxy is running, you can interact with the Kubernetes API using curl.
+
+    Test the API Server Directly (No Proxy):
+    ```bash
+    curl -k https://YourMasterNodeIP:6443
+    ```
+
+3. **Access the API via the Proxy:**
+   ```bash
+   curl http://YourMasterNodeIP:8001
+   ``` 
+
+4. **List Available API Groups:**
+   ```bash
+   curl http://YourMasterNodeIP:8001/apis
+   ```    
+
+5. **Access the Core API v1:**
+   ```bash
+   curl http://YourMasterNodeIP:8001/api/v1
+   ```   
+
+6. **List All Pods**
+   ```bash
+   curl http://YourMasterNodeIP:8001/api/v1/pods
+   ```     
