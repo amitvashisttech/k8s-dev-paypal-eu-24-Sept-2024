@@ -72,7 +72,6 @@ This README outlines how to create, manage, and scale a Kubernetes `ReplicationC
 9. **Scale the ReplicationController to 5 Replicas:**
 
    ```bash
-
    kubectl scale --replicas=5 rc helloworld-controller
    kubectl get po -o wide 
    ```
@@ -81,7 +80,6 @@ This README outlines how to create, manage, and scale a Kubernetes `ReplicationC
 10. **Delete a Different Pod:**
 
    ```bash
-
    kubectl delete pod hello-k8s-2
    ```
    Deletes another specific pod named hello-k8s-2. The ReplicationController will replace it to maintain the correct number of replicas.
@@ -90,7 +88,6 @@ This README outlines how to create, manage, and scale a Kubernetes `ReplicationC
 11. **Delete the ReplicationController:**
 
    ```bash
-
    kubectl delete -f helloworld-rc.yaml
    ```
    Deletes the ReplicationController and the pods it manages by removing the applied configuration from the cluster.
