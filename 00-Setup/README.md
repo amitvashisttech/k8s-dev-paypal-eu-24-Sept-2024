@@ -28,7 +28,8 @@ sudo -i
 git clone https://github.com/amitvashisttech/k8s-dev-paypal-eu-24-Sept-2024.git
 cd k8s-dev-paypal-eu-24-Sept-2024/00-Setup
 sh install-k8s-master-node.sh
-
+ip addr
+kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address="YourMasterNodeIP" --cri-socket unix://var/run/crio/crio.sock
 ---
 Your Kubernetes master has initialized successfully!
 
@@ -54,6 +55,11 @@ as root:
 root@master:~# mkdir -p $HOME/.kube
 root@master:~# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 root@master:~# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+### Now you can apply the Calico CNI:
+```
+kubectl  apply -f calico.yaml
 ```
 
 ### To Check the K8s Node Status
