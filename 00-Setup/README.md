@@ -65,18 +65,19 @@ root@master:~# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 root@master:~# sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-### Now you can apply the Calico CNI:
-```
-kubectl  apply -f calico.yaml
-```
+
 
 ### To Check the K8s Node Status
 ```
 root@k8s-master:~# kubectl get nodes 
 NAME         STATUS   ROLES    AGE    VERSION
-k8s-master   Ready    master   5m6s   v1.18.0
+master   Ready    master   5m6s   v1.18.0
 ```
 
+### Now you can apply the Calico CNI:
+```
+kubectl  apply -f calico.yaml
+```
 
 ## In parallel Login to both the nodes /workers & clone the repo after that execute install-node.sh. 
 
