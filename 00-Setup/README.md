@@ -28,8 +28,15 @@ sudo -i
 git clone https://github.com/amitvashisttech/k8s-dev-paypal-eu-24-Sept-2024.git
 cd k8s-dev-paypal-eu-24-Sept-2024/00-Setup
 sh install-k8s-master-node.sh
+```
+
+## Now check the IP Address & initialized k8s
+```
 ip addr
+```
+```
 kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address="YourMasterNodeIP" --cri-socket unix://var/run/crio/crio.sock
+```
 ---
 Your Kubernetes master has initialized successfully!
 
