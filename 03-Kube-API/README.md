@@ -60,7 +60,7 @@ This command starts a local proxy to the Kubernetes API server, allowing you to 
 
 3. **Access the API via the Proxy:**
    ```bash
-   curl http://YourMasterNodeIP:8001
+   curl http://YourMasterNodeIP:8001/api
    ``` 
 
 4. **List Available API Groups:**
