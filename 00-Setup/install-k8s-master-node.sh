@@ -84,7 +84,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 echo "******************* Deploying kubernetes ***********************"
 
 # Fix Me - Update the "apiserver-advertise-address" with your master node ip.
-kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address="" --cri-socket unix://var/run/crio/crio.sock
+#kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address="" --cri-socket unix://var/run/crio/crio.sock
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 
