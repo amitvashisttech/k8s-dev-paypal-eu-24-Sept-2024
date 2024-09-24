@@ -28,3 +28,23 @@ kubectl api-versions
 kubectl api-resources
 ```
 ##### Retrieves a list of all available resources (such as pods, services, deployments, etc.) along with their supported verbs (such as get, create, delete, etc.).
+
+
+# Accessing the Kubernetes API Using `kubectl proxy` and `curl`
+
+This README covers how to use `kubectl proxy` to expose the Kubernetes API and how to interact with it using `curl` commands.
+
+## Starting the Kubernetes API Proxy
+
+1. **Run `kubectl proxy`:**
+
+   ```bash
+   kubectl proxy --address='YourMasterNodeIP' --port=8001 --accept-hosts='.' --accept-paths='.' &
+   ```
+This command starts a local proxy to the Kubernetes API server, allowing you to interact with the API through HTTP without needing to authenticate.
+
+ - --address='172.31.0.100': Specifies the IP address on which the proxy will listen.
+ - --port=8001: The port on which the proxy will run.
+ - --accept-hosts='.': Accepts requests from any host.
+ - --accept-paths='.': Allows requests to any API path.
+    The & at the end runs the process in the background.   
