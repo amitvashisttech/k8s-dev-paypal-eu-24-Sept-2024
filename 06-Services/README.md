@@ -95,6 +95,7 @@ List all pods with additional information and labels:
 ```bash
 kubectl get pods -o wide --show-labels
 kubectl get pods --show-labels
+curl <wokernodeipaddress>:<nodeport>
 ```
 
 ### 7. Reapply Service Configuration
