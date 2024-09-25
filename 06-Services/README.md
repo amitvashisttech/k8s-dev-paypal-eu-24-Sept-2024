@@ -76,7 +76,7 @@ curl <ClusterIP>
 ### 5. Edit and Describe Services
 #### a. Edit the Service Configuration
 
-Edit the service configuration using kubectl edit:
+Edit the service configuration & change the type : NodePort
 
 ```bash
 kubectl edit svc helloworld-deployment
