@@ -1,77 +1,115 @@
- ```
-  40  kubectl apply -f 01-helloworld.yaml 
+# Kubernetes Deployment and Rollout Management Training & Development
 
-  42  kubectl  get deploy 
-  43  kubectl  get deploy,rs,pod
-      kubectl expose deploy helloworld-deployment --type=NodePort
-      kubctl get svc 
-      kubctl get nodes -o wide 
-      
-      curl <nodeip>:<nodeport> : i.e curl 172.18.0.4:32742 
+This section provides a set of commands for managing a Kubernetes Deployment, including updating images, exposing services, and handling rollouts.
 
-  41  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2
-  44  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3
-  45  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4
-  46  cat helloworld.yaml 
-  47  cat README.md 
-  48  kubectl rollout history deploy helloworld-deployment
-  49  kubectl rollout history deploy helloworld-deployment --revision=1
-  50  kubectl rollout history deploy helloworld-deployment --revision=2
-  51  kubectl rollout history deploy helloworld-deployment
-  52  kubectl rollout undo deploy helloworld-deployment
-  53  kubectl rollout history deploy helloworld-deployment
-  54  kubectl rollout undo deploy helloworld-deployment
-  55  kubectl rollout history deploy helloworld-deployment
-  56  kubectl rollout undo deploy helloworld-deployment --to-revision=2
-  57  kubectl rollout history deploy helloworld-deployment
-  58  kubectl rollout undo deploy helloworld-deployment --to-revision=1
-  59  kubectl rollout history deploy helloworld-deployment
-  60  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4 --record 
-  61  kubectl rollout history deploy helloworld-deployment
-  62  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3 --record 
-  63  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record 
-  64  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web --record 
-  65  kubectl rollout history deploy helloworld-deployment
+## Commands Overview
 
+### 1. Apply Deployment Configuration
+
+Deploy the application using the provided YAML file:
+
+```bash
+kubectl apply -f 01-helloworld.yaml
 ```
 
+### 2. Manage Deployments and Resources
+#### a. Get Deployment Status
 
-Ignore for Now. 
+List all deployments in the current namespace:
 
-```
-  347  kubectl run hello-k8s --image=nginx --port=80 --dry-run
-  348  kubectl run hello-k8s --image=nginx --port=80 --dry-run -o yaml
-  349  kubectl run hello-k8s --image=nginx --port=80 --dry-run -o yaml  > abc.yaml
-  350  ls
-  351  kubectl apply -f abc.yaml
+```bash
+kubectl get deploy
 ```
 
+#### b. Get Deployments, ReplicaSets, and Pods
+
+List all deployments, replicasets, and pods:
+
+```bash
+kubectl get deploy,rs,pod
 ```
-   66  ls
-   67  kubectl get deployment 
-   68  kubectl get deploy helloworld-deployment
-   69  kubectl describe deploy helloworld-deployment
-   70  kubectl get deploy 
-   71  vim helloworld.yaml 
-   72  kubectl apply -f helloworld.yaml 
-   73  kubectl scale --replicas=7 deploy helloworld-deployment
-   74  kubectl  edit deploy helloworld-deployment
-   75  kubectl  get deploy 
-   76  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record 
-   77  kubectl delete -f helloworld.yaml 
-   78  ls
-   79  vim helloworld-v2.yaml 
-   80  kubectl  apply -f helloworld-v2.yaml 
-   81  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record 
-   82  kubectl  get deploy 
-   83  kubectl set image deployment helloworld-2-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record 
-   84  cat helloworld-v2.yaml 
-   85  kubectl  get deploy 
-   86  kubectl  describe deploy helloworld-2-deployment 
-   87  kubectl  delete -f helloworld-v2.yaml 
-   88  vim helloworld-v3.yaml 
-   89  kubectl apply -f helloworld-v3.yaml 
-   90  kubectl set image deployment helloworld-3-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record 
-   91  kubectl delete -f helloworld-v3.yaml 
+#### c. Expose the Deployment as a Service
+
+Expose the deployment helloworld-deployment as a NodePort service:
+
+```bash
+kubectl expose deploy helloworld-deployment --type=NodePort
 ```
 
+#### d. Get Service Information
+
+Check the status of services to find the NodePort:
+
+```bash
+kubectl get svc
+```
+#### e. Get Node Information
+
+List nodes with detailed information, including IP addresses:
+
+```bash
+kubectl get nodes -o wide
+```
+#### f. Access the Application
+
+Access the application via the NodePort by replacing <nodeip> and <nodeport> with actual values:
+
+```bash
+curl <nodeip>:<nodeport>
+```
+#### Example: curl 172.18.0.4:32742
+
+### 3. Update Deployment Image
+#### a. Update the Image Version
+
+Update the deployment helloworld-deployment with a new image version:
+
+```bash
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4
+```
+
+### 4. Rollout Management
+#### a. View Deployment Rollout History
+
+Check the history of rollouts for the deployment:
+
+```bash
+kubectl rollout history deploy helloworld-deployment
+```
+#### b. View Specific Rollout Revisions
+
+Check details of specific rollout revisions:
+
+```bash
+kubectl rollout history deploy helloworld-deployment --revision=1
+kubectl rollout history deploy helloworld-deployment --revision=2
+```
+#### c. Rollback to a Previous Revision
+
+Undo the last deployment, rolling back to a previous revision:
+
+```bash
+kubectl rollout undo deploy helloworld-deployment
+kubectl rollout undo deploy helloworld-deployment --to-revision=2
+kubectl rollout undo deploy helloworld-deployment --to-revision=1
+```
+
+### 5. Update Deployment with Rollout Record
+
+Update the deployment image and record the rollout history:
+
+```bash
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4 --record
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3 --record
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2 --record
+kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web --record
+```
+#### a. Review the Rollout History After Updates
+
+Review the rollout history after recording the changes:
+
+```bash
+kubectl rollout history deploy helloworld-deployment
+```
