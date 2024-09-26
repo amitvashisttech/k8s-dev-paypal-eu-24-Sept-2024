@@ -48,13 +48,14 @@ If needed, edit the secret using the following command:
 kubectl edit secrets mysecrets
 ```
 
-### 6. Create Directory for Secrets YAML Files
+### 6. Change Directory for Secrets YAML Files
 
-Create a directory and navigate into it to store YAML configuration files related to secrets:
+Change directory and navigate into it to store YAML configuration files related to secrets:
 
 ```bash
-mkdir 09-Secrets
-cd 09-Secrets/
+cd 12-Secrets/
+kubectl apply -f 1-helloworld-secrets.yaml
+kubectl  describe secrets
 ```
 
 ### 7. Create Secret Volume Deployment
@@ -62,7 +63,7 @@ cd 09-Secrets/
 Create a deployment YAML that uses the secrets as volumes. For example, create a file named `helloworld-secrets-volumes.yaml`:
 
 ```bash
-vim helloworld-secrets-volumes.yaml
+vim 2-helloworld-secrets-volumes.yaml
 ```
 
 ### 8. Apply the Deployment
@@ -70,7 +71,7 @@ vim helloworld-secrets-volumes.yaml
 Apply the deployment file to create the pods and the secret volumes:
 
 ```bash
-kubectl create -f helloworld-secrets-volumes.yaml
+kubectl create -f 2-helloworld-secrets-volumes.yaml
 ```
 
 ### 9. Verify Deployment and Pod Status
@@ -88,14 +89,15 @@ kubectl describe pods helloworld-deployment-<pod-id>
 Use `kubectl exec` to enter the running pod and verify the secret files mounted as volumes:
 
 ```bash
-kubectl exec -it helloworld-deployment-<pod-id> -- bash
-ls /etc/hosts
+kubectl exec -it helloworld-deployment-<pod-id> -- sh
+cd /etc/creds
+cat /etc/mysecrets/username.txt
+cat /etc/mysecrets/password.txt
 ```
 
 You can use different methods to access the pod such as:
 
 ```bash
-kubectl exec -it helloworld-deployment-<pod-id> -- /bin/bash
 kubectl exec -it helloworld-deployment-<pod-id> -- /bin/sh
 ```
 
