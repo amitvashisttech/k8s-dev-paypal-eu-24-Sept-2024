@@ -36,7 +36,7 @@ kubectl describe pod helloworld-deployment-57986b947d-7p2nx
 Label specific nodes to match the node selector criteria in the deployment:
 
 ```bash
-kubectl label nodes worker2 hardware=virtual
+kubectl label node worker2 hardware=virtual
 kubectl get nodes --show-labels
 ```
 Check the wide output of pods to verify where they are running:
