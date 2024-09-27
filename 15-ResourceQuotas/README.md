@@ -9,7 +9,7 @@ This section covers the steps to manage Resource Quotas in Kubernetes, including
 Change to the directory where the resource quotas and related YAML files are stored:
 
 ```bash
-cd 11-ResourceQuotas/
+cd 15-ResourceQuotas/
 ```
 
 ### 2. Manage Resource Quota Configurations
