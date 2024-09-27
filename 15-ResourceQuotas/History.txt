@@ -1,0 +1,116 @@
+  612  cd 11-ResourceQuotas/
+  613  ls
+  614  cat defaults.yml 
+  615  kubectl create ns myspace
+  616  ls
+  617  kubectl apply -f helloworld-no-quotas.yml 
+  618  lls
+  619  ls
+  620  cat helloworld-no-quotas.yml 
+  621  cp -rf ../05-Deployment/01-Helloworld.yaml .
+  622  ls
+  623  vim 01-Helloworld.yaml 
+  624  ls
+  625  mv 01-Helloworld.yaml 01-Helloworld-with-no-quota.yaml 
+  626  ls
+  627  kubectl apply -f 01-Helloworld-with-no-quota.yaml -n myspace 
+  628  kubectl get pods -n myspace
+  629  kubectl delete -f 01-Helloworld-with-no-quota.yaml -n myspace 
+  630  ls
+  631  cat defaults.yml 
+  632  kubectl apply -f defaults.yml 
+  633  kubectl get lr -n myspace
+  634  kubectl get limitrange -n myspace
+  635  kubectl get limitrange -n myspace -o yaml 
+  636  ls
+  637  kubectl apply -f 01-Helloworld-with-no-quota.yaml -n myspace 
+  638  kubectl get pods -n myspace
+  639  kubectl describe pods helloworld-deployment-776bb868fd-9wt9l -n myspace
+  640  ls
+  641  cp -rf 01-Helloworld-with-no-quota.yaml 03-Helloworld-with-quota.yaml 
+  642  ls
+  643  mv defaults.yml 02-defaults.yml 
+  644  ls
+  645  vim 03-Helloworld-with-quota.yaml 
+  646  kubectl apply -f 03-Helloworld-with-quota.yaml -n myspace 
+  647  kubectl get pods  -n myspace 
+  648  kubectl describe pods helloworld-deploymenti-with-quota-7478bb4645-7bjvx  -n myspace 
+  649  kubectl get pods  -n myspace 
+  650  kubectl delete -f 03-Helloworld-with-quota.yaml 
+  651  ls
+  652  kubectl delete -f 03-Helloworld-with-quota.yaml -n myspace
+  653  ls
+  654  rm -rf helloworld-*
+  655  ls
+  656  mv resourcequota.yml 04-Resourcequota.yml 
+  657  ls
+  658  cat 04-Resourcequota.yml 
+  659  cp -rf 04-Resourcequota.yml 00-NameSpace.yml 
+  660  vim 04-Resourcequota.yml 
+  661  vim 00-NameSpace.yml 
+  662  ls
+  663  kubectl apply -f 04-Resourcequota.yml 
+  664  kubectl get resourcequota -n myspace 
+  665  vim 04-Resourcequota.yml 
+  666  kubectl apply -f 04-Resourcequota.yml 
+  667  kubectl get resourcequota -n myspace 
+  668  ls
+  669  kubectl apply -f 03-Helloworld-with-quota.yaml -n myspace
+  670  kubectl get pods -n myspace
+  671  kubectl get deploy -n myspace
+  672  kubectl describe deploy helloworld-deploymenti-with-quota
+  673  kubectl describe deploy helloworld-deploymenti-with-quota -n myspace
+  674  kubectl describe rs helloworld-deploymenti-with-quota-7478bb4645  -n myspace
+  675  ls
+  676  kubectl get deploy -n myspace
+  677  kubectl delete deploy helloworld-deployment -n myspace
+  678  kubectl get deploy -n myspace
+  679  kubectl get resourcequota -n myspace 
+  680  ls
+  681  cat 04-Resourcequota.yml 
+  682  vim 03-Helloworld-with-quota.yaml 
+  683  ls
+  684  kubectl apply -f 03-Helloworld-with-quota.yaml -n myspace
+  685  kubectl delete -f 03-Helloworld-with-quota.yaml -n myspace
+  686  kubectl apply -f 03-Helloworld-with-quota.yaml -n myspace
+  687  kubectl get pods  -n myspace 
+  688  kubectl delete -f 03-Helloworld-with-quota.yaml -n myspace
+  689  vim 03-Helloworld-with-quota.yaml 
+  690  kubectl get pods  -n myspace 
+  691  kubectl apply -f 03-Helloworld-with-quota.yaml -n myspace
+  692  kubectl get pods  -n myspace 
+  693  kubectl get resourcequota -n myspace 
+  694  kubectl scale --replicas=5 deploy helloworld-deploymenti-with-quota -n myspace
+  695  kubectl get pods  -n myspace 
+  696  kubectl get resourcequota -n myspace 
+  697  kubectl get pods  -n myspace 
+  698  kubectl get rs   -n myspace 
+  699  kubectl describe rs helloworld-deploymenti-with-quota-569dc6fc8  -n myspace 
+  700  ls
+  701  kubectl apply -f  01-Helloworld-with-no-quota.yaml -n myspace 
+  702  kubectl get deploy  -n myspace 
+  703  kubectl get pods   -n myspace 
+  704  vim 04-Resourcequota.yml 
+  705  kubectl apply -f 04-Resourcequota.yml 
+  706  kubectl get resourcequota -n myspace 
+  707  kubectl get pods 
+  708  kubectl get pods -n myspace
+  709  kubectl delete pod helloworld-deploymenti-with-quota-569dc6fc8-ll6lf helloworld-deploymenti-with-quota-569dc6fc8-xzvv4 -n myspace
+  710  kubectl get pods -n myspace
+  711  kubectl delete pod --all -n myspace --grace-period=0 --force
+  712  kubectl get pods -n myspace
+  713  kubectl get resourcequota -n myspace 
+  714  ls
+  715  cd ..
+  716  ls
+  717  cat 08-Secrets/History.txt 
+  718  kubectl create secret generic mysecrets --help
+  719  kubectl create secret generic mysecrets --from-literal=key1=value1 -n myspace
+  720  kubectl create secret generic mysecrets2 --from-literal=key1=value1 -n myspace
+  721  kubectl create secret generic mysecrets3 --from-literal=key1=value1 -n myspace
+  722  kubectl get resourcequota -n myspace 
+  723  ls
+  724  kubectl create configmap mysecrets3 --from-literal=key1=value1 -n myspace
+  725  kubectl create configmap mysecrets4 --from-literal=key1=value1 -n myspace
+  726  ls
+  727  cd 11-ResourceQuotas/
