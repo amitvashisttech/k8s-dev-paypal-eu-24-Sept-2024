@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: helloworld-ds
+  name: helloworld-ds-toleration
   labels:
     app: helloworld
 spec:
